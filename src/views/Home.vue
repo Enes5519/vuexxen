@@ -1,9 +1,13 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <BigImageSlider />
+  </div>
 </template>
 
 <script>
+import BigImageSlider from '@/components/BigImageSlider';
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { BigImageSlider }
 };
 </script>

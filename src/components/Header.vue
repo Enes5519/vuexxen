@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{ scroll: hasScrollClass }">
     <ExxenLogo class="logo" />
     <nav>
       <router-link class="active" to="/">Anasayfa</router-link>
@@ -23,12 +23,24 @@ export default {
   components: {
     SearchBox,
     ExxenLogo
+  },
+  data() {
+    return {
+      hasScrollClass: false
+    };
+  },
+  mounted() {
+    window.addEventListener(
+      'scroll',
+      () => (this.hasScrollClass = window.scrollY > 50)
+    );
   }
 };
 </script>
 
 <style scoped>
 header {
+  z-index: 9999;
   position: fixed;
   width: 100%;
   height: 60px;
@@ -36,12 +48,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #212121;
   background-image: linear-gradient(
     to bottom,
     #171717,
     rgba(10, 10, 10, 0.8) 98%
   ) !important;
+}
+
+.scroll {
+  background-color: #212121;
 }
 
 .logo {

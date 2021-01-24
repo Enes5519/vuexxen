@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html{
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-color: #000 #515151;
+  scrollbar-width: inherit;
+  scroll-behavior: smooth;
+  height: 100%;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: Inter, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+  height: 100%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}

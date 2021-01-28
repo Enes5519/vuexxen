@@ -27,3 +27,47 @@ a {
   color: #fff;
   text-decoration: none;
 }
+
+.VueCarousel-pagination {
+  position: absolute;
+  left: 35%;
+  bottom: 15%;
+}
+
+.VueCarousel-dot{
+  box-shadow: 3px 3px 10px #000;
+  padding: 0!important;
+  margin-right: 20px;
+}
+
+.VueCarousel-dot:focus{
+  outline: none !important;
+}
+
+.VueCarousel-navigation-prev, .VueCarousel-navigation-next{
+  transform: none !important;
+  background: #feca07 !important;
+  font-family: inherit !important;
+  padding: 0 !important;
+  font-size: 2.5rem;
+  height: 50px;
+  width: 40px;
+  opacity: 0.3;
+  transition: opacity 150ms;
+}
+
+.VueCarousel-navigation-next{
+  margin-right: 20px;
+}
+
+.VueCarousel-navigation-prev{
+  margin-left: 20px;
+}
+
+.VueCarousel-navigation-prev:hover, .VueCarousel-navigation-next:hover{
+  opacity: .7;
+}
+
+.VueCarousel-navigation-prev:focus, .VueCarousel-navigation-next:focus{
+  outline: none !important;
+}

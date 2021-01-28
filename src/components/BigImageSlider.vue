@@ -1,14 +1,28 @@
 <template>
-  <div class="backdrop">
-    <img :src="createImageLink(headerMovies[current].backdrop_path)" alt="" />
-    <div class="text-on-image">
-      <h1>{{ headerMovies[current].name }}</h1>
-      <div class="actions">
-        <button type="button">Hemen İzle</button>
-        <button type="button">Listeme Ekle</button>
+  <carousel
+    :per-page="1"
+    :navigation-enabled="true"
+    :touchDrag="false"
+    :mouse-drag="false"
+    :scroll-per-page="false"
+    :pagination-size="25"
+    pagination-color="rgba(0,0,0,.6)"
+    pagination-active-color="#fff"
+    navigation-next-label=">"
+    navigation-prev-label="<"
+  >
+    <slide v-for="slide in headerMovies" v-bind:key="slide.name">
+      <div class="backdrop" :style="getImageStyle(slide.backdrop_path)">
+        <h1>{{ slide.name }}</h1>
+        <div class="actions">
+          <button type="button">
+            Hemen İzle
+          </button>
+          <button type="button">Listeme Ekle</button>
+        </div>
       </div>
-    </div>
-  </div>
+    </slide>
+  </carousel>
 </template>
 
 <script>
@@ -28,18 +42,13 @@ export default {
       const result = await response.json();
       this.headerMovies = result.results.slice(0, 7);
     }
-
-    this.intervalId = setInterval(() => {
-      if (++this.current >= 7) {
-        this.current = 0;
-      }
-    }, 2000);
-  },
-  beforeDestroy() {
-    clearInterval(this.intervalId);
   },
   methods: {
-    createImageLink: createImageLink
+    getImageStyle(path) {
+      return {
+        backgroundImage: `url('${createImageLink(path)}')`
+      };
+    }
   }
 };
 </script>
@@ -48,52 +57,40 @@ export default {
 .backdrop {
   height: 45vw;
   width: 100%;
-  position: relative;
-}
-
-.backdrop:after {
+  background-size: cover;
   box-shadow: inset 0 -50px 30px -10px #111;
-  bottom: 0;
-  content: '';
-  display: block;
-  left: 0;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 3cm;
 }
 
-.backdrop > img {
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
-}
-
-.backdrop > .text-on-image {
-  font-size: 1.5rem;
-  position: absolute;
-  top: 50%;
-  left: 5%;
+.backdrop > h1 {
+  margin-top: 4.5cm;
+  font-size: 3.5rem;
   text-shadow: 3px 3px 10px #000;
 }
 
-.backdrop > .text-on-image > .actions > button {
-  padding: 10px 20px;
-  font-weight: 700;
-  font-size: 19px;
-  border: 0;
-  margin-top: 15px;
-  margin-right: 15px;
-  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.5);
+.backdrop > .actions {
+  margin-top: 2rem;
 }
 
-.backdrop > .text-on-image > .actions > button:first-of-type {
+.backdrop > .actions > button {
+  padding: 10px 30px;
+  font-weight: 700;
+  font-size: 25px;
+  border: none;
+  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.backdrop > .actions > button:first-of-type {
   background-color: #feca07;
 }
 
-.backdrop > .text-on-image > .actions > button:last-of-type {
+.backdrop > .actions > button:last-of-type {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
+  margin-left: 15px;
 }
 </style>

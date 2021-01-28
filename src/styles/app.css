@@ -49,11 +49,12 @@ a {
   background: #feca07 !important;
   font-family: inherit !important;
   padding: 0 !important;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   height: 50px;
   width: 40px;
   opacity: 0.3;
   transition: opacity 150ms;
+  top: 45% !important;
 }
 
 .VueCarousel-navigation-next{

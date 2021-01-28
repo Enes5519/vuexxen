@@ -5,11 +5,12 @@
     :touchDrag="false"
     :mouse-drag="false"
     :scroll-per-page="false"
+    :autoplay="true"
     :pagination-size="25"
     pagination-color="rgba(0,0,0,.6)"
     pagination-active-color="#fff"
-    navigation-next-label=">"
-    navigation-prev-label="<"
+    navigation-next-label="＞"
+    navigation-prev-label="＜"
   >
     <slide v-for="slide in headerMovies" v-bind:key="slide.name">
       <div class="backdrop" :style="getImageStyle(slide.backdrop_path)">

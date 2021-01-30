@@ -1,6 +1,7 @@
 <template>
   <carousel
     :per-page="1"
+    :loop="true"
     :navigation-enabled="true"
     :touchDrag="false"
     :mouse-drag="false"
@@ -41,7 +42,9 @@ export default {
     const response = await fetchMovies(MOVIES_PATH); // 7
     if (response.ok) {
       const result = await response.json();
-      this.headerMovies = result.results.slice(0, 7);
+      this.headerMovies = result.results
+        .filter(r => r.backdrop_path)
+        .slice(0, 7);
     }
   },
   methods: {

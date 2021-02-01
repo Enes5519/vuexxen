@@ -7,6 +7,7 @@
     :mouse-drag="false"
     :scroll-per-page="false"
     :autoplay="true"
+    :autoplay-timeout="4000"
     :pagination-size="25"
     pagination-color="rgba(0,0,0,.6)"
     pagination-active-color="#fff"

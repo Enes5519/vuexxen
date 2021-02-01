@@ -72,3 +72,8 @@ a {
 .VueCarousel-navigation-prev:focus, .VueCarousel-navigation-next:focus{
   outline: none !important;
 }
+
+.VueCarousel-inner{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

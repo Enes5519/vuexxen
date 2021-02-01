@@ -5,6 +5,8 @@ const EXXEN_ID = 4405;
 
 export const MOVIES_PATH = `discover/tv?language=tr&api_key=${API_KEY}&with_networks=${EXXEN_ID}`;
 export const POPULAR_MOVIES_PATH = `discover/tv?language=tr&sort_by=popularity.desc&api_key=${API_KEY}&with_networks=${EXXEN_ID}`;
+export const REALITY_MOVIES_PATH = `discover/tv?language=tr&sort_by=popularity.desc&api_key=${API_KEY}&with_networks=${EXXEN_ID}&with_genres=10764`;
+export const COMEDY_MOVIES_PATH = `discover/tv?language=tr&sort_by=popularity.desc&api_key=${API_KEY}&with_networks=${EXXEN_ID}&with_genres=35`;
 
 export default function fetchMovies(path) {
   return fetch(API_URL + path);

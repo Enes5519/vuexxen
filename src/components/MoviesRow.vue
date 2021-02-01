@@ -3,14 +3,16 @@
     <div class="title">{{ title }}</div>
     <carousel
       class="movies"
-      :per-page="5"
+      :per-page="4"
       :touchDrag="false"
       :mouse-drag="false"
-      :scroll-per-page="false"
+      :scroll-per-page="true"
       :pagination-enabled="false"
       :navigation-enabled="true"
       navigation-next-label="＞"
       navigation-prev-label="＜"
+      :space-padding="45"
+      :spacePaddingMaxOffsetFactor="-10"
     >
       <slide class="movie" v-for="mov in movies" v-bind:key="mov.name">
         <img
@@ -76,9 +78,7 @@ export default {
     const response = await fetchMovies(this.path);
     if (response.ok) {
       const result = await response.json();
-      this.movies = result.results
-        .filter(r => r.backdrop_path)
-        .slice(0, this.slice);
+      this.movies = result.results.filter(r => r.backdrop_path).slice(0, 10);
     }
   },
   methods: {
@@ -119,7 +119,7 @@ export default {
 
 .movie-info {
   display: none;
-  width: 100%;
+  width: inherit;
   cursor: default;
   position: absolute;
   bottom: 0;

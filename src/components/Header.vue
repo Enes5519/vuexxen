@@ -1,13 +1,14 @@
 <template>
   <header :class="{ scroll: hasScrollClass }">
-    <ExxenLogo class="logo" />
-    <nav>
-      <router-link class="active" to="/">Anasayfa</router-link>
+    <hamburger-icon class="mobile-nav-icon" @click="display = !display" />
+    <exxen-logo class="logo" />
+    <nav :class="{ active: display }">
+      <router-link to="/">Anasayfa</router-link>
       <router-link to="/explore">Keşfet</router-link>
       <router-link to="/my-list">Listelerim</router-link>
     </nav>
-    <SearchBox />
-    <div class="profile">
+    <SearchBox class="hide-in-mobile" />
+    <div class="profile hide-in-mobile">
       <img src="../assets/avatar.png" alt="Avatar" />
       <span>Enes Yıldırım</span>
     </div>
@@ -16,17 +17,20 @@
 
 <script>
 import ExxenLogo from '@/assets/logo.svg';
+import HamburgerIcon from '@/assets/icons/hamburger-menu.svg';
 import SearchBox from '@/components/SearchBox';
 
 export default {
   name: 'Header',
   components: {
     SearchBox,
-    ExxenLogo
+    ExxenLogo,
+    HamburgerIcon
   },
   data() {
     return {
-      hasScrollClass: false
+      hasScrollClass: false,
+      display: true
     };
   },
   mounted() {
@@ -65,6 +69,7 @@ header {
 }
 
 nav {
+  display: flex;
   flex: 0.9 1 auto;
 }
 
@@ -75,11 +80,6 @@ nav > a {
   margin-right: 2rem;
   font-weight: 500;
   height: 60px;
-}
-
-nav > .router-link-active {
-  color: #feca07;
-  border-top: 2px solid #feca07;
 }
 
 .profile {
@@ -96,5 +96,64 @@ nav > .router-link-active {
 
 .profile > span {
   font-weight: 500;
+}
+
+.mobile-nav-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    background: #212121;
+  }
+
+  .hide-in-mobile {
+    display: none;
+  }
+
+  .mobile-nav-icon {
+    display: block;
+    fill: #fff;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  nav {
+    transition: opacity 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  nav.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav {
+    position: fixed;
+    width: 65%;
+    height: 100%;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    background-color: #212121;
+  }
+
+  nav > a {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #111;
+  }
+}
+
+@media (min-width: 768px) {
+  nav > .router-link-active {
+    color: #feca07;
+    border-top: 2px solid #feca07;
+  }
 }
 </style>

@@ -62,6 +62,7 @@ export default {
   height: 45vw;
   width: 100%;
   background-size: cover;
+  background-position: center;
   box-shadow: inset 0 -50px 30px -10px #111;
   display: flex;
   flex-direction: column;
@@ -70,19 +71,18 @@ export default {
 }
 
 .backdrop > h1 {
-  margin-top: 4.5cm;
   font-size: 3.5rem;
   text-shadow: 3px 3px 10px #000;
 }
 
 .backdrop > .actions {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .backdrop > .actions > button {
-  padding: 10px 30px;
+  padding: 0.625rem 2rem;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.5625rem;
   border: none;
   box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -96,5 +96,15 @@ export default {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .backdrop {
+    height: 80vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+  }
 }
 </style>

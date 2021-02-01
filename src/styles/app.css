@@ -77,3 +77,20 @@ a {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+@media (max-width: 768px) {
+  html{
+    font-size: 12px;
+  }
+
+  .VueCarousel-dot{
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .VueCarousel-pagination{
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+  }
+}

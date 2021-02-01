@@ -3,7 +3,11 @@
     <div class="title">{{ title }}</div>
     <carousel
       class="movies"
-      :per-page="4"
+      :perPageCustom="[
+        [0, 1],
+        [768, 2],
+        [1024, 3]
+      ]"
       :touchDrag="false"
       :mouse-drag="false"
       :scroll-per-page="true"
@@ -113,8 +117,9 @@ export default {
 }
 
 .movie > img {
+  width: 100%;
+  min-width: 200px;
   height: 200px;
-  vertical-align: middle;
 }
 
 .movie-info {
@@ -140,7 +145,7 @@ export default {
 
 .movie-title {
   color: #feca07;
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: bolder;
   width: 100%;
   text-overflow: ellipsis;
@@ -170,12 +175,12 @@ export default {
   padding: 0 8px;
 }
 .play-button > div > svg {
-  height: 15px;
-  width: 15px;
+  height: 0.9375rem;
+  width: 0.9375rem;
   fill: #000;
 }
 .play-button > span {
-  font-size: 14px;
+  font-size: 0.875rem;
   margin: 5px 15px;
   font-weight: 600;
   color: #feca07;
@@ -190,19 +195,25 @@ export default {
 }
 
 .actions > button > svg {
-  height: 20px;
-  width: 15px;
+  height: 1.25rem;
+  width: 0.9375rem;
 }
 
 .movie-overview {
   line-height: 1rem;
   margin-top: 0.5rem;
-  font-size: 12px;
+  font-size: 0.75rem;
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .movie > img {
+    height: 150px;
+  }
 }
 </style>

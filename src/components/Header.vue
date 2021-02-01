@@ -3,9 +3,9 @@
     <hamburger-icon class="mobile-nav-icon" @click="display = !display" />
     <exxen-logo class="logo" />
     <nav :class="{ active: display }">
-      <router-link to="/">Anasayfa</router-link>
-      <router-link to="/explore">Keşfet</router-link>
-      <router-link to="/my-list">Listelerim</router-link>
+      <router-link to="/" exact>Anasayfa</router-link>
+      <router-link to="/explore" exact>Keşfet</router-link>
+      <router-link to="/my-list" exact>Listelerim</router-link>
     </nav>
     <SearchBox class="hide-in-mobile" />
     <div class="profile hide-in-mobile">
